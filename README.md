@@ -29,10 +29,8 @@ The app includes unit and integration tests using Jest and React Testing Library
 
 The app uses Tailwind CSS for responsive and modern styling, enhancing the user experience across devices.
 
-Overall, this app demonstrates a complete React project with efficient state management, API integration, component-based design, and testing, following best practices for modern web development.
 
-
-    Key Libraries and Tools Used:-
+               Dependencies:
 
 React: Main library for building the UI.
 
@@ -47,6 +45,40 @@ Jest: Testing framework.
 React Testing Library: Used for testing React components.
 
 Parcel: Bundler for building and serving the project.
+
+
+               Configuration Files:-
+
+.gitignore:  Specifies files and directories to be ignored by Git.
+
+.parcelrc:   Configuration for the Parcel bundler.
+
+.postcssrc:  Configures PostCSS with Tailwind CSS.
+
+babel.config.js:  Configures Babel for JSX and ES6+ transpilation.
+
+index.css:   Main CSS file using Tailwind CSS utilities.
+
+index.html:   Entry point HTML file with a root div for React.
+
+package.json:  Lists dependencies and scripts for building, testing, and running the app.
+
+tailwind.config.js:  Configures Tailwind CSS with custom content paths.
+               
+
+
+               Scripts:
+               
+start: Runs the app using Parcel in development mode.
+
+build: Builds the app for production.
+
+test: Runs unit tests with Jest.
+
+watch-test: Runs tests in watch mode.
+
+Overall, this project demonstrates a well-structured, scalable React application with strong emphasis on state management, modular design, efficient data fetching, responsive UI, and robust testing practices.
+
 
 
 
