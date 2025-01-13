@@ -87,9 +87,6 @@ Overall, this project demonstrates a well-structured, scalable React application
 
 
 
-![ezgif com-optimize](https://github.com/user-attachments/assets/dd291cf7-a2f2-4570-911a-d798f3656efc)
-
-
 
 ![ezgif com-optimize](https://github.com/user-attachments/assets/5c276d1a-71be-4b46-82a7-590ae86711a4)
 
