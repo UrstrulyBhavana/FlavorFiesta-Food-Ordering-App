@@ -87,7 +87,6 @@ Overall, this project demonstrates a well-structured, scalable React application
 
 
 
-[](https://ezgif.com/optiwebp/ezgif-7-8702bfb61b.webp)
 
 
 
