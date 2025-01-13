@@ -86,8 +86,8 @@ Overall, this project demonstrates a well-structured, scalable React application
 ![urstrulybhavana-flavour-fiesta-app-netlify-app](https://github.com/user-attachments/assets/79945122-2509-4d3a-8f47-6d8aa833bb8b)
 
 
-https://github.com/user-attachments/assets/ff6899a9-e5d3-4745-b1d5-af2e9e9c48c5
 
+![ezgif com-optimize](https://github.com/user-attachments/assets/dd291cf7-a2f2-4570-911a-d798f3656efc)
 
 
 
