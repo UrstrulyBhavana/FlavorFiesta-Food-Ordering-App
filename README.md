@@ -11,28 +11,28 @@ The Header component is a functional component displaying the app's logo, naviga
 
 The Body component (functional) fetches restaurant data from an API using the useEffect hook and displays it using the RestaurantCard component. Users can search for restaurants or filter top-rated ones. The search results are dynamically updated based on the user input.
 
-3.     Restaurant Menu and Cart:-
+## Restaurant Menu and Cart:-
 
 The RestaurantMenu component displays a selected restaurant’s menu based on the ID from the URL using React Router. It uses the custom useRestaurantMenu hook for API data fetching. Users can add items to the cart, and the cart updates are handled via Redux actions (addItem, removeItem, and clearCart). The Cart component shows the list of items added, allowing users to clear the cart with a button click.
 
-4.     Class-Based Components:-
+## Class-Based Components:-
 
 The UserClass component demonstrates class-based components by fetching user data from GitHub API on component mount and updating the state. It showcases lifecycle methods like componentDidMount and componentDidUpdate.
 
-5.     Redux State Management:-
+## Redux State Management:-
 
 The app uses Redux for state management, primarily in the cart feature. The cartSlice defines actions for adding, removing, and clearing items in the cart. The app store is configured using configureStore from Redux Toolkit.
 
-6.     Testing:-
+## Testing:-
 
 The app includes unit and integration tests using Jest and React Testing Library. Tests cover components like Header, Cart, Contact, and Search, ensuring UI elements render correctly, and functionalities like button clicks and cart updates behave as expected.
 
-6.     Styling and Responsiveness:-
+## Styling and Responsiveness:-
 
 The app uses Tailwind CSS for responsive and modern styling, enhancing the user experience across devices.
 
 
-               Dependencies:
+## Dependencies:-
 
 React: Main library for building the UI.
 
@@ -49,7 +49,7 @@ React Testing Library: Used for testing React components.
 Parcel: Bundler for building and serving the project.
 
 
-               Configuration Files:-
+## Configuration Files:-
 
 .gitignore:  Specifies files and directories to be ignored by Git.
 
@@ -68,8 +68,7 @@ package.json:  Lists dependencies and scripts for building, testing, and running
 tailwind.config.js:  Configures Tailwind CSS with custom content paths.
                
 
-
-               Scripts:
+## Scripts:
                
 start: Runs the app using Parcel in development mode.
 
