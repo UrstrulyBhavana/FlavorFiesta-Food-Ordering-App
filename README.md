@@ -3,9 +3,11 @@
 This Food Ordering App is a single-page application (SPA) built with React using modern web development practices, featuring both functional and class-based components. The app offers a seamless user experience for browsing restaurant menus, searching for specific food items, and managing a shopping cart. 
 The application leverages Redux for state management, React Router for client-side routing, and uses Tailwind CSS for styling.
 
-Header and Navigation:- The Header component is a functional component displaying the app's logo, navigation links (Home, About Us, Contact, Grocery), online/offline status, and a dynamic cart item count using Redux state. Users can toggle between login and logout states using a button.
+    Header and Navigation:-
+The Header component is a functional component displaying the app's logo, navigation links (Home, About Us, Contact, Grocery), online/offline status, and a dynamic cart item count using Redux state. Users can toggle between login and logout states using a button.
 
-Restaurant List and Search:- The Body component (functional) fetches restaurant data from an API using the useEffect hook and displays it using the RestaurantCard component. Users can search for restaurants or filter top-rated ones. The search results are dynamically updated based on the user input.
+    Restaurant List and Search:- 
+The Body component (functional) fetches restaurant data from an API using the useEffect hook and displays it using the RestaurantCard component. Users can search for restaurants or filter top-rated ones. The search results are dynamically updated based on the user input.
 
 Restaurant Menu and Cart:- The RestaurantMenu component displays a selected restaurant’s menu based on the ID from the URL using React Router. It uses the custom useRestaurantMenu hook 
  for API data fetching. Users can add items to the cart, and the cart updates are handled via Redux actions (addItem, removeItem, and clearCart). The Cart component shows the list of 
