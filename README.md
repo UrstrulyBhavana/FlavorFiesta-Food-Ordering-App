@@ -21,6 +21,7 @@ Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ord
 - **Responsive Design**: Mobile-first responsive layout with TailwindCSS.
 - **Offline Status Indicator**: Shows the current online/offline status of the user.
 - **Grocery Page**: A dedicated page to showcase grocery-related items.
+- **Item and Restaurant Management**: Efficiently handles item listing and restaurant card components for modularity.
 
 ---
 
@@ -56,6 +57,8 @@ FlavorFiesta
 │   │   ├── Contact.js
 │   │   ├── About.js
 │   │   ├── Grocery.js
+│   │   ├── ItemList.js
+│   │   ├── RestaurantCard.js
 │   └── utils
 │       ├── appStore.js
 │       ├── cartSlice.js
@@ -115,6 +118,10 @@ $ npm test
   - Validates restaurant filtering and searching functionality.
 - **Contact Component**:
   - Ensures form elements are properly rendered.
+- **ItemList Component**:
+  - Validates item listing and add-to-cart functionality.
+- **RestaurantCard Component**:
+  - Ensures restaurant cards render correctly with mock data.
 
 ---
 
@@ -136,19 +143,26 @@ $ npm test
    - View restaurant menus dynamically.
    - Add, update, and clear cart items.
 
-5. **Responsive UI**:
+5. **ItemList Component**:
+   - Displays a list of items with detailed information.
+   - Add items to the cart with a single click.
+
+6. **RestaurantCard Component**:
+   - Modular card design for showcasing restaurant details.
+
+7. **Responsive UI**:
    - Styled with TailwindCSS for mobile-first responsiveness.
 
-6. **Error Handling**:
+8. **Error Handling**:
    - Display error components for unmatched routes or API issues.
 
-7. **Offline Indicator**:
+9. **Offline Indicator**:
    - Real-time online/offline status indication.
 
-8. **Testing**:
+10. **Testing**:
    - Unit testing implemented using Jest and React Testing Library.
 
-9. **Grocery Page**:
+11. **Grocery Page**:
    - A standalone page to display grocery items.
 ```
 
@@ -163,6 +177,8 @@ $ npm test
 4. Manage the cart with add/remove options.
 5. Check online/offline status.
 6. Explore a separate grocery section.
+7. View item details and add to cart using ItemList.
+8. Browse restaurant details via RestaurantCard.
 
 #### Screenshots:
 ![Application Screenshot 1](path/to/screenshot1.png)  
