@@ -22,6 +22,8 @@ Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ord
 - **Offline Status Indicator**: Shows the current online/offline status of the user.
 - **Grocery Page**: A dedicated page to showcase grocery-related items.
 - **Item and Restaurant Management**: Efficiently handles item listing and restaurant card components for modularity.
+- **Category-Based Menu**: Displays menu categories with toggled visibility for efficient navigation.
+- **Shimmer Loading Effect**: Placeholder animations for better user experience during data fetching.
 
 ---
 
@@ -52,6 +54,8 @@ FlavorFiesta
 │   │   ├── Header.js
 │   │   ├── Body.js
 │   │   ├── RestaurantMenu.js
+│   │   ├── RestaurantCategory.js
+│   │   ├── Shimmer.js
 │   │   ├── Cart.js
 │   │   ├── Error.js
 │   │   ├── Contact.js
@@ -59,13 +63,17 @@ FlavorFiesta
 │   │   ├── Grocery.js
 │   │   ├── ItemList.js
 │   │   ├── RestaurantCard.js
+│   │   ├── User.js
+│   │   ├── UserClass.js
 │   └── utils
 │       ├── appStore.js
 │       ├── cartSlice.js
 │       ├── constants.js
 │       ├── useOnlineStatus.js
 │       ├── useRestaurantMenu.js
+│       ├── UserContext.js
 ├── index.css
+├── App.js
 ├── package.json
 └── README.md
 ```
@@ -114,6 +122,8 @@ $ npm test
   - Checks the presence of login/logout buttons and cart items.
 - **Restaurant Menu Component**:
   - Tests the add-to-cart functionality and menu rendering.
+- **Restaurant Category Component**:
+  - Validates the toggled visibility of category items.
 - **Search Component**:
   - Validates restaurant filtering and searching functionality.
 - **Contact Component**:
@@ -122,6 +132,8 @@ $ npm test
   - Validates item listing and add-to-cart functionality.
 - **RestaurantCard Component**:
   - Ensures restaurant cards render correctly with mock data.
+- **Shimmer Component**:
+  - Confirms loading animations render correctly.
 
 ---
 
@@ -150,20 +162,32 @@ $ npm test
 6. **RestaurantCard Component**:
    - Modular card design for showcasing restaurant details.
 
-7. **Responsive UI**:
+7. **RestaurantCategory Component**:
+   - Displays categories of menu items with toggle functionality for expanded views.
+
+8. **Shimmer Loading Effect**:
+   - Renders placeholder loading animations during data fetch.
+
+9. **User and UserClass Components**:
+   - Display user details dynamically using both functional and class-based approaches.
+
+10. **Responsive UI**:
    - Styled with TailwindCSS for mobile-first responsiveness.
 
-8. **Error Handling**:
+11. **Error Handling**:
    - Display error components for unmatched routes or API issues.
 
-9. **Offline Indicator**:
+12. **Offline Indicator**:
    - Real-time online/offline status indication.
 
-10. **Testing**:
+13. **Testing**:
    - Unit testing implemented using Jest and React Testing Library.
 
-11. **Grocery Page**:
+14. **Grocery Page**:
    - A standalone page to display grocery items.
+
+15. **App.js**:
+   - Configures the main layout and routing for the application.
 ```
 
 ---
@@ -179,6 +203,8 @@ $ npm test
 6. Explore a separate grocery section.
 7. View item details and add to cart using ItemList.
 8. Browse restaurant details via RestaurantCard.
+9. Toggle menu categories using RestaurantCategory.
+10. Experience smooth loading with Shimmer animations.
 
 #### Screenshots:
 ![Application Screenshot 1](path/to/screenshot1.png)  
@@ -197,6 +223,7 @@ $ npm test
 - **src/components**: Contains React components for the app.
 - **src/utils**: Utility files such as custom hooks and Redux slices.
 - **index.css**: TailwindCSS styles.
+- **App.js**: Main application file for layout and routing.
 
 ---
 
