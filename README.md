@@ -1,9 +1,9 @@
 ```
-#  Flavor Fiesta: Food Ordering App
+# Flavor Fiesta: Food Ordering App
 
 ---
 
-##  Overview
+## Overview
 
 Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ordering. This application connects you with top local restaurants and chefs, providing an easy and enjoyable way to discover, order, and savor delicious food.
 
@@ -31,12 +31,12 @@ Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ord
 
 #### Technologies Used:
 
-![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat-square)  
-![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat-square)  
-![React Router](https://img.shields.io/badge/-React_Router-CA4245?logo=react-router&logoColor=white&style=flat-square)  
-![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square)  
-![Parcel](https://img.shields.io/badge/-Parcel-BCC2D4?logo=parcel&logoColor=white&style=flat-square)  
-![Font Awesome](https://img.shields.io/badge/-Font_Awesome-528DD7?logo=font-awesome&logoColor=white&style=flat-square)
+- **React**
+- **Redux Toolkit**
+- **React Router**
+- **TailwindCSS**
+- **Parcel**
+- **Font Awesome**
 
 #### Tools:
 - **Unit Testing**: Jest and React Testing Library.
@@ -47,7 +47,7 @@ Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ord
 
 ### Application Structure :file_folder:
 
-```plaintext
+```
 FlavorFiesta
 ├── src
 │   ├── components
@@ -139,7 +139,7 @@ $ npm test
 
 ### Functionalities
 
-```plaintext
+```
 1. **Authentication**:
    - Login/logout toggle button with state management.
 
