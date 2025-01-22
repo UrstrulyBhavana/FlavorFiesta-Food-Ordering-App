@@ -1,4 +1,4 @@
-```
+
 # Flavor Fiesta: Food Ordering App
 
 ---
@@ -44,7 +44,7 @@ Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ord
 - **Version Control**: GitHub.
 
 ---
-
+```
 ### Application Structure :file_folder:
 
 ```plaintext
@@ -206,9 +206,11 @@ $ npm test
 9. Toggle menu categories using RestaurantCategory.
 10. Experience smooth loading with Shimmer animations.
 
-#### Screenshots:
-![Application Screenshot 1](path/to/screenshot1.png)  
-![Application Screenshot 2](path/to/screenshot2.png)
+#### Demo:
+
+
+https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110
+
 
 ---
 
