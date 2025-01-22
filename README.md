@@ -1,92 +1,204 @@
-# FlavorFiesta-Food-Ordering-App
+```
+# Flavor Fiesta: Food Ordering App
 
-#### This Food Ordering App is a single-page application (SPA) built with React using modern web development practices, featuring both functional and class-based components. The app offers a seamless user experience for browsing restaurant menus, searching for specific food items, and managing a shopping cart. The application leverages Redux for state management, React Router for client-side routing, and uses Tailwind CSS for styling.
+---
 
-    Header and Navigation:-
-The Header component is a functional component displaying the app's logo, navigation links (Home, About Us, Contact, Grocery), online/offline status, and a dynamic cart item count using Redux state. Users can toggle between login and logout states using a button.
+## Overview
 
-    Restaurant List and Search:- 
-The Body component (functional) fetches restaurant data from an API using the useEffect hook and displays it using the RestaurantCard component. Users can search for restaurants or filter top-rated ones. The search results are dynamically updated based on the user input.
+Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ordering. This application connects you with top local restaurants and chefs, providing an easy and enjoyable way to discover, order, and savor delicious food.
 
-    Restaurant Menu and Cart:-
-The RestaurantMenu component displays a selected restaurant’s menu based on the ID from the URL using React Router. It uses the custom useRestaurantMenu hook 
- for API data fetching. Users can add items to the cart, and the cart updates are handled via Redux actions (addItem, removeItem, and clearCart). The Cart component shows the list of 
- items added, allowing users to clear the cart with a button click.
+---
 
-    Class-Based Components:- 
-The UserClass component demonstrates class-based components by fetching user data from GitHub API on component mount and updating the state. It showcases 
- lifecycle methods like componentDidMount and componentDidUpdate.
+### Features :sparkles:
 
-    Redux State Management:- 
-The app uses Redux for state management, primarily in the cart feature. The cartSlice defines actions for adding, removing, and clearing items in the cart. The 
- app store is configured using configureStore from Redux Toolkit.
+- **User Authentication**: Built-in user authentication to personalize user experience.
+- **Dynamic Restaurant List**: Display restaurants fetched dynamically from the Swiggy API.
+- **Search & Filter**: Search for restaurants and filter them based on top ratings.
+- **Detailed Menu**: Explore restaurant menus with real-time updates.
+- **Cart Management**: Add, view, and clear items from the cart seamlessly.
+- **Lazy Loading**: Implements lazy loading for improved performance.
+- **Error Handling**: Custom error component to manage route errors.
+- **Responsive Design**: Mobile-first responsive layout with TailwindCSS.
+- **Offline Status Indicator**: Shows the current online/offline status of the user.
+- **Grocery Page**: A dedicated page to showcase grocery-related items.
 
-    Testing:-
-The app includes unit and integration tests using Jest and React Testing Library. Tests cover components like Header, Cart, Contact, and Search, ensuring UI elements render 
- correctly, and functionalities like button clicks and cart updates behave as expected.
+---
 
-    Styling and Responsiveness:- 
-The app uses Tailwind CSS for responsive and modern styling, enhancing the user experience across devices.
+### Built With :hammer_and_wrench:
 
+#### Technologies Used:
 
-## Dependencies:-
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat-square)  
+![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white&style=flat-square)  
+![React Router](https://img.shields.io/badge/-React_Router-CA4245?logo=react-router&logoColor=white&style=flat-square)  
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square)  
+![Parcel](https://img.shields.io/badge/-Parcel-BCC2D4?logo=parcel&logoColor=white&style=flat-square)  
+![Font Awesome](https://img.shields.io/badge/-Font_Awesome-528DD7?logo=font-awesome&logoColor=white&style=flat-square)
 
-React: Main library for building the UI.
+#### Tools:
+- **Unit Testing**: Jest and React Testing Library.
+- **State Management**: Redux Toolkit.
+- **Version Control**: GitHub.
 
-Redux: Manages the cart state using react-redux and @reduxjs/toolkit.
+---
 
-React Router: Handles navigation between different pages (react-router-dom).
+### Application Structure :file_folder:
 
-Tailwind CSS: Provides utility-first CSS classes for styling.
+```plaintext
+FlavorFiesta
+├── src
+│   ├── components
+│   │   ├── Header.js
+│   │   ├── Body.js
+│   │   ├── RestaurantMenu.js
+│   │   ├── Cart.js
+│   │   ├── Error.js
+│   │   ├── Contact.js
+│   │   ├── About.js
+│   │   ├── Grocery.js
+│   └── utils
+│       ├── appStore.js
+│       ├── cartSlice.js
+│       ├── constants.js
+│       ├── useOnlineStatus.js
+│       ├── useRestaurantMenu.js
+├── index.css
+├── package.json
+└── README.md
+```
 
-Jest: Testing framework.
+---
 
-React Testing Library: Used for testing React components.
+### Installation :computer:
 
-Parcel: Bundler for building and serving the project.
+1. **Clone the repository:**
 
+```bash
+$ git clone https://github.com/UrstrulyBhavana/Food-Ordering-App.git
+$ cd Food-Ordering-App
+```
 
-## Configuration Files:-
+2. **Install dependencies:**
 
-.gitignore:  Specifies files and directories to be ignored by Git.
+```bash
+$ npm install
+```
 
-.parcelrc:   Configuration for the Parcel bundler.
+3. **Start the development server:**
 
-.postcssrc:  Configures PostCSS with Tailwind CSS.
+```bash
+$ npm start
+```
 
- babel.config.js:  Configures Babel for JSX and ES6+ transpilation.
+4. **Build for production:**
 
- index.css:   Main CSS file using Tailwind CSS utilities.
+```bash
+$ npm run build
+```
 
- index.html:   Entry point HTML file with a root div for React.
+---
 
- package.json:  Lists dependencies and scripts for building, testing, and running the app.
+### Testing :white_check_mark:
 
- tailwind.config.js:  Configures Tailwind CSS with custom content paths.
-               
+Run unit tests for the application:
 
-## Scripts:
-               
-start: Runs the app using Parcel in development mode.
+```bash
+$ npm test
+```
 
-build: Builds the app for production.
+#### Covered Test Cases:
+- **Header Component**:
+  - Checks the presence of login/logout buttons and cart items.
+- **Restaurant Menu Component**:
+  - Tests the add-to-cart functionality and menu rendering.
+- **Search Component**:
+  - Validates restaurant filtering and searching functionality.
+- **Contact Component**:
+  - Ensures form elements are properly rendered.
 
-test: Runs unit tests with Jest.
+---
 
-watch-test: Runs tests in watch mode.
+### Functionalities
 
-Overall, this project demonstrates a well-structured, scalable React application with strong emphasis on state management, modular design, efficient data fetching, responsive UI, and robust testing practices.
+```plaintext
+1. **Authentication**:
+   - Login/logout toggle button with state management.
 
+2. **Dynamic Restaurant Listings**:
+   - Fetch restaurant details from Swiggy API dynamically.
+   - Lazy loading implemented for better performance.
 
+3. **Search & Filter**:
+   - Input-based search for restaurants.
+   - Filter restaurants based on top ratings.
 
+4. **Menu and Cart**:
+   - View restaurant menus dynamically.
+   - Add, update, and clear cart items.
 
+5. **Responsive UI**:
+   - Styled with TailwindCSS for mobile-first responsiveness.
 
-![urstrulybhavana-flavour-fiesta-app-netlify-app](https://github.com/user-attachments/assets/79945122-2509-4d3a-8f47-6d8aa833bb8b)
+6. **Error Handling**:
+   - Display error components for unmatched routes or API issues.
 
+7. **Offline Indicator**:
+   - Real-time online/offline status indication.
 
+8. **Testing**:
+   - Unit testing implemented using Jest and React Testing Library.
 
-https://github.com/user-attachments/assets/f617ba36-6406-4a02-b7e2-f9d5d3a3a262
+9. **Grocery Page**:
+   - A standalone page to display grocery items.
+```
 
+---
 
+### Project Demonstration :memo:
 
+#### How it Works:
+1. Users can browse restaurants dynamically loaded from Swiggy API.
+2. Search for specific restaurants or filter based on ratings.
+3. View detailed menus and add items to the cart.
+4. Manage the cart with add/remove options.
+5. Check online/offline status.
+6. Explore a separate grocery section.
+
+#### Screenshots:
+![Application Screenshot 1](path/to/screenshot1.png)  
+![Application Screenshot 2](path/to/screenshot2.png)
+
+---
+
+### API References :link:
+
+- **Swiggy Restaurant API**: Fetches restaurant and menu details dynamically.
+
+---
+
+### Folder Overview :open_file_folder:
+
+- **src/components**: Contains React components for the app.
+- **src/utils**: Utility files such as custom hooks and Redux slices.
+- **index.css**: TailwindCSS styles.
+
+---
+
+### Contributors :busts_in_silhouette:
+- **Linga Bhavana**: Developer and maintainer.
+
+---
+
+### Contact :email:
+
+For questions or suggestions, feel free to contact me:
+- **Email**: urstrulybhavana1432@gmail.com
+- **GitHub**: [UrstrulyBhavana](https://github.com/UrstrulyBhavana)
+
+---
+
+### License :page_facing_up:
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+```
 
