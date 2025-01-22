@@ -1,11 +1,11 @@
 
-# Flavor Fiesta: Food Ordering App
+# Flavour Fiesta: Food Ordering App
 
 ---
 
 ## Overview :-
 
-Welcome to **Flavor Fiesta**, your ultimate destination for hassle-free food ordering. This application connects you with top local restaurants and chefs, providing an easy and enjoyable way to discover, order, and savor delicious food.
+Welcome to **Flavour Fiesta**, your ultimate destination for hassle-free food ordering. This application connects you with top local restaurants and chefs, providing an easy and enjoyable way to discover, order, and savor delicious food.
 
 ---
 
