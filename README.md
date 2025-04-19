@@ -1,7 +1,6 @@
 
 # Flavour Fiesta: Food Ordering App
 
----
 
 ## Overview :-
 
