@@ -1,9 +1,11 @@
 
 # FlavourFiesta – React Food Ordering App
 
-## 🧪 Demo
+## 📽️ Demo
 
-https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110
+> Explore the key features of the **FlavourFiesta App** in this walkthrough video.
+
+🎬 [Click here to watch the demo video](https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110)
 
 ---
 
@@ -13,7 +15,7 @@ Welcome to **Flavour Fiesta**, your ultimate destination for hassle-free food or
 
 ---
 
-### Features :sparkles:
+### ✨ Features
 
 - **User Authentication**: Built-in user authentication to personalize user experience.
 - **Dynamic Restaurant List**: Display restaurants fetched dynamically from the Swiggy API.
@@ -31,7 +33,7 @@ Welcome to **Flavour Fiesta**, your ultimate destination for hassle-free food or
 
 ---
 
-### Built With :hammer_and_wrench:
+### 🛠️ Built With
 
 #### Technologies Used:
 
@@ -49,7 +51,7 @@ Welcome to **Flavour Fiesta**, your ultimate destination for hassle-free food or
 
 ---
 
-### Application Structure :file_folder:
+### 📁 Application Structure
 
 ```plaintext
 FlavorFiesta
@@ -196,7 +198,7 @@ $ npm test
 
 ---
 
-### Project Demonstration :memo:
+### 🧩 User Flow
 
 #### How it Works:
 1. Users can browse restaurants dynamically loaded from Swiggy API.
