@@ -1,6 +1,9 @@
 
-# Flavour Fiesta: Food Ordering App
+# FlavourFiesta – React Food Ordering App
 
+![Flavour Fiesta Demo]()  
+
+---
 
 ## Overview :-
 
@@ -204,11 +207,6 @@ $ npm test
 8. Browse restaurant details via RestaurantCard.
 9. Toggle menu categories using RestaurantCategory.
 10. Experience smooth loading with Shimmer animations.
-
-#### Demo:
-
-
-https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110
 
 
 ---
