@@ -1,7 +1,7 @@
 
 # FlavourFiesta – React Food Ordering App
 
-![Flavour Fiesta Demo]()  
+![Flavour Fiesta Demo](https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110)  
 
 ---
 
