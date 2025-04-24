@@ -5,7 +5,7 @@
 
 > Explore the key features of the **FlavourFiesta App** in this walkthrough video.
 
-🎬 [Click here to watch the demo video](https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110)
+https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110
 
 ---
 
@@ -86,7 +86,7 @@ FlavorFiesta
 
 ---
 
-### Installation :computer:
+### 💻 Installation
 
 1. **Clone the repository:**
 
@@ -115,7 +115,7 @@ $ npm run build
 
 ---
 
-### Testing :white_check_mark:
+### ✅ Testing
 
 Run unit tests for the application:
 
@@ -215,13 +215,13 @@ $ npm test
 
 ---
 
-### API References :link:
+### 🔗 API References
 
 - **Swiggy Restaurant API**: Fetches restaurant and menu details dynamically.
 
 ---
 
-### Folder Overview :open_file_folder:
+### 📁 Folder Overview
 
 - **src/components**: Contains React components for the app.
 - **src/utils**: Utility files such as custom hooks and Redux slices.
@@ -230,12 +230,13 @@ $ npm test
 
 ---
 
-### Contributors :busts_in_silhouette:
+### 👥 Contributors
+
 - **Linga Bhavana**: Developer and maintainer.
 
 ---
 
-### Contact :email:
+### 📬 Contact
 
 For questions or suggestions, feel free to contact me:
 - **Email**: urstrulybhavana1432@gmail.com
@@ -243,7 +244,7 @@ For questions or suggestions, feel free to contact me:
 
 ---
 
-### License :page_facing_up:
+### 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 ```
