@@ -1,11 +1,16 @@
 
-# FlavourFiesta – React Food Ordering App
+# 🛒 Flavour Fiesta – React Food Ordering App
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20with-%F0%9F%92%96%20by%20Bhavana-brightgreen?style=for-the-badge" alt="Made with Love by Bhavana" />
+</p>
+
 
 ## 📽️ Demo
 
-> Explore the key features of the **FlavourFiesta App** in this walkthrough video.
+Click the image below to watch the video demo:
 
-https://github.com/user-attachments/assets/31f5f2f0-d472-4b4e-8cd3-7b023d92f110
+[![Flavour Fiesta Demo](https://img.youtube.com/vi/Q5SOcvposZM/0.jpg)](https://youtu.be/Q5SOcvposZM)
 
 ---
 
