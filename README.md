@@ -127,7 +127,6 @@ Run unit tests for the application:
 ```bash
 $ npm test
 ```
-
 #### Covered Test Cases:
 - **Header Component**:
   - Checks the presence of login/logout buttons and cart items.
