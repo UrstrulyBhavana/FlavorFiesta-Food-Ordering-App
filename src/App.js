@@ -1,4 +1,4 @@
-import React , { lazy, Suspense, useEffect, useState } from "react"
+import React, { lazy, Suspense, useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -9,17 +9,18 @@ import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
 import Cart from "./components/Cart";
 import appStore from "./utils/appStore";
-import Shimmer from "./components/Shimmer";
+import Shimmer from './components/Shimmer';
 import { Provider } from "react-redux";
 import UserContext from "./utils/UserContext";
-// import Grocery from "./components/Grocery"
-
-
-const Grocery = lazy(() => import("./components/Grocery"));
+import Footer from "./components/Footer";
+import MockContext from "./utils/MockContext";
+import FAQ from "./components/FAQ";
+import ScrollToTop from "./components/ScrollToTop";
 
 const AppLayout = () => {
 
-    const [userName, setUserName] = useState();
+  const [userName, setUserName] = useState();
+  const [useMock, setUseMock] = useState(false);
 
   //authentication
   useEffect(() => {
@@ -33,53 +34,55 @@ const AppLayout = () => {
 
   return (
     <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <div className="app">
-          <Header />
-          <Outlet />
-        </div>
-      </UserContext.Provider>
+      <MockContext.Provider value={{ useMock, setUseMock }}>
+        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+          <div className="app min-h-screen w-full overflow-x-hidden">
+            <ScrollToTop />
+            <Header />
+            <Outlet />
+            <Footer />
+          </div>
+        </UserContext.Provider>
+      </MockContext.Provider>
     </Provider>
   );
 };
 
 const appRouter = createBrowserRouter([
-   {
+  {
     path: "/",
     element: <AppLayout />,
     children: [
-           {
-            path: "/",
-            element: <Body />,
-           },
-           {
-            path: "/about",
-            element: <About />,
-           },
-           {
-            path: "/contact",
-            element: <Contact />,
-           },
-           {
-            path: "/grocery",
-            element: <Suspense fallback={<h1>Loading...</h1>}> 
-                       <Grocery />
-                    </Suspense>,
-            },
-           {
-            path: "/restaurants/:resId",
-            element: <RestaurantMenu />,
-           },
-           {
-            path: "/cart",
-            element: <Cart />,
-          },
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/faq",
+        element: <FAQ />
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
-     errorElement: <Error />,
-   },
+    errorElement: <Error />,
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<RouterProvider router={appRouter}/>)
+root.render(<RouterProvider router={appRouter} />)
 
 

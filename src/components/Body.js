@@ -1,121 +1,202 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import Shimmer from './Shimmer';
-import { Link } from 'react-router-dom';
-import useOnlineStatus from '../utils/useOnlineStatus';
-import UserContext from '../utils/UserContext';
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import mockResListData from "./mocks/mockResListData.json";
+
+// CHANGED: import List_API (so we don’t hardcode URLs here)
+import { List_API } from "../utils/constants";
 
 const Body = () => {
- 
-    const [listOfRestaurants, setListOfRestaurant] = useState([]);
-
-    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
-    const [searchText, setSearchText] = useState("");
-
-    // const RestaurantCardPromoted =  withPromotedLabel(RestaurantCard);
-
-    console.log("Body Rendered ", listOfRestaurants)
-
-    useEffect(() => {
-      fetchData();
-    }, []);
-
-
-const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.3787054&lng=78.55259869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-    const json = await data.json();
-    console.log(json);
-    setListOfRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-    setFilteredRestaurant(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-  };
+  const [listOfRestaurants, setListOfRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [useMock, setUseMock] = useState(false); // checkbox
+  const [topRatedOn, setTopRatedOn] = useState(false);
+  const [source, setSource] = useState("api"); // "api" | "mock" | "fallback"
 
   const onlineStatus = useOnlineStatus();
 
-  if( onlineStatus === false)
-    return(
-       <h1>Looks like you're Offline !! Please check your Internet Connection; </h1>
-    );
+  const extractRestaurants = (data) =>
+    data?.data?.cards?.find(
+      (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    )?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
-    const { loggedInUser, setUserName } = useContext(UserContext);
+  useEffect(() => {
+    let ignore = false;
+    const controller = new AbortController();
 
-  return listOfRestaurants.length === 0 ? ( 
-      <Shimmer />
-     ) : (
-    <div className='body'>
+    async function fetchDataSafe() {
+      try {
+        if (useMock) {
+          const mockRestaurants = extractRestaurants(mockResListData);
+          if (!ignore) {
+            setListOfRestaurant(mockRestaurants);
+            setFilteredRestaurant(mockRestaurants);
+            setSource("mock");
+          }
+          return;
+        }
 
-        <div className='filter flex '>
+        // CHANGED: use List_API and the AbortController signal
+        const resp = await fetch(List_API, { signal: controller.signal });
+        if (ignore) return;
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-            <div className='search m-4 p-4'>
+        const json = await resp.json();
+        if (ignore) return;
 
-                <input type='text' 
-                 data-testid = "searchInput"
-                 className='border border-solid border-black rounded-md text-center font-medium mb-2  py-1'
-                 value={searchText}
-                 onChange={(e) => {
-                 setSearchText(e.target.value);
-                 }}
-                />
+        const restaurants = extractRestaurants(json);
+        if (ignore) return;
 
-                <button   className="p-2 mx-14 m-4 bg-white text-green-600 font-bold border border-green-600 rounded-lg shadow-md 
-                  hover:bg-green-600 hover:text-white hover:shadow-lg 
-                  focus:outline-none focus:ring-2 focus:ring-green-300 
-                  active:bg-green-700 transition duration-150 ease-in-out"
-                    onClick={() => {
-                 // console.log(searchText)
-                    const filteredRestaurant = listOfRestaurants.filter((res) => 
-                    res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    );
-                   setFilteredRestaurant(filteredRestaurant);
-                  } } > 
-                    Search
-                </button>
-            </div>
+        if (restaurants.length) {
+          setListOfRestaurant(restaurants);
+          setFilteredRestaurant(restaurants);
+          setSource("api");
+        } else {
+          const mockRestaurants = extractRestaurants(mockResListData);
+          setListOfRestaurant(mockRestaurants);
+          setFilteredRestaurant(mockRestaurants);
+          setSource("fallback");
+          console.warn("API empty — using mock fallback");
+        }
+      } catch (err) {
+        if (ignore) return;
+        const mockRestaurants = extractRestaurants(mockResListData);
+        setListOfRestaurant(mockRestaurants);
+        setFilteredRestaurant(mockRestaurants);
+        setSource("fallback");
+        console.warn("API failed — using mock fallback once:", err?.message || err);
+      }
+    }
 
-            <div className='m-4 p-4 flex items-center '>
-                <button className="p-2 mx-14 m-4 bg-white text-green-600 font-bold border border-green-600 rounded-lg shadow-md 
-                  hover:bg-green-600 hover:text-white hover:shadow-lg 
-                  focus:outline-none focus:ring-2 focus:ring-green-300 
-                  active:bg-green-700 transition duration-150 ease-in-out"
-                onClick={ () => {
-                const filteredList = listOfRestaurants.filter( 
-                     (res) => res.info.avgRating > 4.2
-                );
+    fetchDataSafe();
+    setTopRatedOn(false);
 
-                setFilteredRestaurant(filteredList)
-            }}>
-                 Top Rated Restaurants
-            </button>
-        </div>
+    return () => {
+      ignore = true;
+      controller.abort();
+    };
+  }, [useMock]); // keep dependencies as-is
 
-            <div className='updatingcontextvalue m-4 p-4 flex items-center'>
-                <label htmlFor="name" className="block text-gray-700 text-sm font-bold mx-4">
-                   UserName :
-                 </label>
-               
-                <input className="min-w-min px-3 py-2 text-center border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                  value={loggedInUser}
-                   onChange={(e) => setUserName(e.target.value)}/>
-            </div>
-        </div>
+  if (onlineStatus === false) {
+    return <h1>You're Offline !! Please check your Internet Connection</h1>;
+  }
 
-        <div className='res-container flex flex-wrap justify-center gap-4'>
-            {
-                filteredRestaurant.map((restaurant) => (
+  if (!Array.isArray(filteredRestaurant)) return <Shimmer />;
 
-                <Link key={restaurant.info.id} to={ "/restaurants/" + restaurant.info.id} >
-                    { restaurant.info.promoted ? (
-                        <RestaurantCardPromoted resData = {restaurant} />
-                        ) : (
-                       <RestaurantCard   resData = {restaurant}/>
-                        )}    
-                  </Link> 
-                ))
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="body p-4 overflow-x-clip">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
+        {/* Toggle + source badge */}
+        <div className="flex justify-between items-center mb-4">
+          <label className="text-sm flex items-center gap-1">
+            <input
+              type="checkbox"
+              checked={useMock}
+              onChange={() => setUseMock((v) => !v)}
+            />
+            Use Mock Data
+          </label>
+
+          <span
+            className={
+              "px-3 py-1 text-xs font-semibold rounded-full shadow-sm " +
+              (source === "api"
+                ? "bg-blue-100 text-blue-800"
+                : source === "mock"
+                ? "bg-emerald-100 text-emerald-800"
+                : "bg-amber-100 text-amber-800")
             }
+          >
+            {source === "api" && "🌐 API mode"}
+            {source === "mock" && "📦 Mock mode"}
+            {source === "fallback" && "🛟 Auto fallback (mock)"}
+          </span>
         </div>
+
+        {/* Search + Filters */}
+        <div className="filter w-full flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-6">
+          <input
+            type="text"
+            data-testid="searchInput"
+            className="w-full md:w-72 h-10 rounded-full border border-slate-300 px-4 text-sm font-medium
+                       placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400
+                       focus:border-transparent"
+            value={searchText}
+            placeholder="Search Restaurants"
+            onChange={(e) => {
+              const text = e.target.value;
+              setSearchText(text);
+              if (text.trim() === "") {
+                setFilteredRestaurant(listOfRestaurants);
+                setTopRatedOn(false);
+              }
+            }}
+          />
+
+          <div className="w-full md:w-auto grid grid-cols-2 gap-2 md:flex md:gap-3">
+            <button
+              className="h-11 md:h-10 md:px-5 tracking-widest rounded-full bg-emerald-500 text-white font-semibold text-base md:text-sm shadow
+                         hover:bg-emerald-600 active:scale-[.98] transition"
+              onClick={() => {
+                const filtered = listOfRestaurants.filter((res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+                setFilteredRestaurant(filtered);
+                setTopRatedOn(false);
+                setSearchText("");
+              }}
+            >
+              Search
+            </button>
+
+            <button
+              className={`h-11 md:h-10 md:px-5 -tracking-tight md:tracking-normal rounded-full text-white font-semibold text-base md:text-sm shadow active:scale-[.98] transition ${
+                topRatedOn
+                  ? "bg-amber-600 hover:bg-amber-700"
+                  : "bg-amber-500 hover:bg-amber-600"
+              }`}
+              onClick={() => {
+                setTopRatedOn((on) => {
+                  const next = !on;
+                  setFilteredRestaurant(
+                    next
+                      ? listOfRestaurants.filter(
+                          (res) => Number(res?.info?.avgRating) >= 4.4
+                        )
+                      : listOfRestaurants
+                  );
+                  return next;
+                });
+              }}
+            >
+              {topRatedOn ? "Top Rated (ON)" : "Top Rated Restaurants"}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="res-container grid justify-items-center gap-4 sm:gap-5 xl:gap-6
+                     grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+        >
+          {filteredRestaurant.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={`/restaurants/${restaurant.info.id}${useMock ? "?mock=1" : ""}`}
+              state={{ useMock }}
+              className="block"
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
-)
-}
+  );
+};
 
-export default Body
-
+export default Body;

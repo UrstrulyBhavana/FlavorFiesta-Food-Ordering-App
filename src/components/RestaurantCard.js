@@ -1,41 +1,67 @@
 import { CDN_URL } from "../utils/constants";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const RestaurantCard = (props) => {
+const RestaurantCard = ({ resData }) => {
+  // console.log(resData);
+  // console.log("💥 RestaurantCard Name:", resData?.info?.name);
+  const info = resData?.info ?? {};
+  const {
+    cloudinaryImageId = "",
+    name = "Restaurant",
+    cuisines = [],
+    avgRating,
+    sla,
+    costForTwo,
+  } = info;
 
-  const { resData } = props;
-  console.log(resData);
-  const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } = resData?.info;
+  const cuisineText = Array.isArray(cuisines) ? cuisines.slice(0, 3).join(", ") : "";
+  const eta = sla?.slaString ?? "—";
+  const priceForTwo = costForTwo ?? "—";
+
+  const ratingNum = Number(avgRating);
+  const ratingColor =
+    isNaN(ratingNum) ? "bg-gray-200 text-gray-700" :
+    ratingNum >= 4.2 ? "bg-green-100 text-green-800" :
+    ratingNum >= 3.5 ? "bg-yellow-100 text-yellow-800" :
+    "bg-red-100 text-red-800";
 
   return (
-    <div data-testid="resCard" className="m-4 p-4 w-[230px] h-[360px] rounded-lg bg-amber-300 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105">
-
-      <img className="rounded-lg w-full h-40 object-cover " src={CDN_URL + cloudinaryImageId} alt={name} />
-
-       <div className="res-card-content flex-1 flex flex-col justify-between">
-        <h4 className="font-bold py-2 text-lg text-center">{name}</h4>
-        <h5 className="text-center text-sm text-black truncate ">{cuisines.join(" , ")}</h5>
-        <h5 className="text-center text-sm">{avgRating}<FontAwesomeIcon icon={faStar} /></h5>
-        <h5 className="text-center text-sm">{sla.slaString}</h5>
-        <h5 className="text-center text-sm">{costForTwo}</h5>
+    <div
+      data-testid="resCard"
+      className="m-2 p-4 w-[230px] h-[360px] rounded-lg bg-amber-300 hover:shadow-md transition duration-300 flex flex-col justify-between"
+      title={name}
+    >
+      
+      <div className="overflow-hidden rounded-lg">
+        <img
+          className="w-full h-40 object-cover transform transition-transform duration-300 ease-in-out hover:scale-105"
+          src={CDN_URL + cloudinaryImageId}
+          alt={name}
+          loading="lazy"
+        />
       </div>
 
+      <div className="flex-1 flex flex-col justify-between mt-3">
+        <h4 className="font-bold text-lg text-center line-clamp-2">{name}</h4>
+
+        <h5 className="text-center text-sm text-black truncate" title={cuisineText}>
+          {cuisineText}
+        </h5>
+
+        <div className="flex items-center justify-center gap-2">
+          <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${ratingColor}`}>
+            <FontAwesomeIcon icon={faStar} className="mr-1" />
+            {isNaN(ratingNum) ? "—" : ratingNum.toFixed(1)}
+          </span>
+          <span className="text-sm text-gray-800">{eta}</span>
+        </div>
+
+        <h5 className="text-center text-sm">{priceForTwo}</h5>
+      </div>
     </div>
   );
-}
-
-//  export const withPromotedLabel = (RestaurantCard) => {
-//   return (props) => {
-//     return (
-//       <div>
-//         <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
-//         <RestaurantCard {... props} />
-//       </div>
-//     )
-//   }
- 
-// }
+};
 
 export default RestaurantCard;
 
