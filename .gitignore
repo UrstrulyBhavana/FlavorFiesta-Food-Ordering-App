@@ -14,3 +14,5 @@ coverage/
 
 # env / secrets (if you ever add them)
 .env
+
+/package-lock.json
