@@ -1,5 +1,16 @@
+
+# dependencies
 node_modules/
-dist
-.parcel-cache
-package-lock.json
-/coverage
+
+# parcel / build caches & outputs
+.cache/
+.parcel-cache/
+dist/
+coverage/
+
+# logs & misc
+*.log
+.DS_Store
+
+# env / secrets (if you ever add them)
+.env
