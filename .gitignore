@@ -15,4 +15,10 @@ coverage/
 # env / secrets (if you ever add them)
 .env
 
-/package-lock.json
+/package-lock.jsonnode_modules/
+.cache/
+.parcel-cache/
+dist/
+coverage/
+*.zip
+package-lock.json
